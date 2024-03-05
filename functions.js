@@ -153,5 +153,60 @@ console.log(concatenateStrings("Archana", "Biamonte"));
 /* 
     ? FizzBuzz 2.0
     * use your fizzBuzz code from earlier BUT
-    
+    * wrap it inside of a function
+    * allow me to choose my start value
+    * allow me to choose my stop value
+    ! SPICEY MODE
+    * ensure values are only positive
 */
+
+
+function fizzBuzz(start, stop) {
+    if (start >= 0 && stop >= 0) {
+        for (let i = start; i <= stop; i += 1) {
+            i % 15 == 0 ? console.log("FizzBuzz")
+                : i % 3 == 0 ? console.log("Fizz")
+                : i % 5 == 0 ? console.log("Buzz")
+                : console.log(i)
+        }
+    } else {
+        console.log("You didn't provide us with positive values yo")
+    }
+}
+
+console.log(fizzBuzz(1, 125))
+
+function fizzBuzz(start, stop) {
+    if (start >= 0 && stop >= 0) {
+      for (let i = start; i <= stop; i += 1) {
+        i % 15 == 0
+          ? console.log("FizzBuzz")
+          : i % 3 == 0
+          ? console.log("Fizz")
+          : i % 5 == 0
+          ? console.log("Buzz")
+          : console.log(i);
+      }
+      return;
+    }
+    console.log("You didn't provide us with positive values yo");
+  }
+
+/* 
+    ? Reverse Words in a String
+    * write a function that takes a string as input
+    * it must return the same string with the order of the words reverse
+    * ex: paul returns luap
+    * your task is to implement reverseWords function and test it with different inputs
+*/
+
+function reverse(str) {
+    let reversed = ""
+    for (i = str.length - 1; i >= 0; i--) {
+        console.log(`Letter: ${str[i]} Index: ${i}`)
+        reversed = reversed + str[i]
+    }
+    return reversed
+}
+
+console.log(reverse("Paul"))
