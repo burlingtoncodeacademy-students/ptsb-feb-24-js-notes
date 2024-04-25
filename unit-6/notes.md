@@ -63,3 +63,32 @@ const db = mongoose.connection;
 
 db.once("open", () => log(`Connected: ${MONGO}`));
 ```
+
+# Models 
+- Define what our database collection will look like.
+  - A schema for each object being created.
+  - `mongoose` establishes our schema.
+
+Example: 
+```js
+const UserSchema = new mongoose.Schema({
+    firstName: {
+        type: String,
+        required: true 
+    }
+})
+```
+
+## Challenge:
+```js
+/*
+! CHALLENGE:
+    - Add a boilerplate code for the controller
+    - Create a POST method route ('/signup')
+    - Make sure route is working
+        - simple response of "Connected"
+        -Test in Postman
+    - full URL is:
+        - localhost:4000/user/signup
+*/
+```
