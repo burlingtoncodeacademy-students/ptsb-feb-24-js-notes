@@ -4,6 +4,7 @@ const app = express();
 const PORT = process.env.PORT; // points to our environment file and puts the value of PORT from that variable into this PORT variable.
 const userController = require('./controllers/user.controller')
 const movieController = require('./controllers/movie.controller');
+// const validateSession = require('./middleware/validate-session');
 
 //! MongoDB Connection
 const mongoose = require('mongoose'); // used from node_modules.
@@ -20,6 +21,7 @@ app.use(express.json()) // added to allow us to accept JSON data from the body o
 
 //* Routes / Controllers
 app.use('/user', userController)
+// app.use(validateSession) // when active will block all routes below.
 app.use('/movies', movieController)
 
 app.listen(PORT, () => console.log(`Movie Server on Port: ${PORT}`));
