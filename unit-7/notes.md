@@ -35,3 +35,37 @@
   - Import the component into App.jsx and mount it between the Header and Footer components.
 */
 ```
+
+### React Extension
+**React Snippets**
+dsznajder.es7-react-js-snippets
+[docs](https://github.com/ults-io/vscode-react-javascript-snippets/blob/HEAD/docs/Snippets.md)
+- Quick Commands
+  - rfce
+    - React Functional Component Export
+  - rfc
+    - React Funcitonal Component (default export)
+
+# State
+- Helps modify data based on a condition
+  - ex: 
+    - offline/online status
+    - session token storage
+- Utilizes types of hooks
+- Requires to be imported
+
+`import { useState } from 'react'`
+
+## `useState()`
+- Structure:
+  - `keyword [ variable, function ] = hook(initial value);`
+  - The Process:
+
+```js
+function useState(startingData) {
+  function updateState(newData) {
+    startingData = newData;
+  }
+  return [startingData, updateState]
+}
+```
