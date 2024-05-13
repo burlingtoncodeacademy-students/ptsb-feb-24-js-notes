@@ -3,13 +3,12 @@ import './App.css';
 import Nav from './components/nav/Nav';
 import Welcome from './components/welcome/Welcome';
 import Counter from './components/counter/Counter';
+import AddUser from './components/add-user/AddUser';
 
 function App() {
 
   // const name = "Sam"
-  const [names, setNames] = useState([
-    'Frodo', 'Sam', "Pippin", "Merry"
-  ]);
+  const [names, setNames] = useState([]);
 
   const [ count, setCount ] = useState(0);
 
@@ -31,7 +30,15 @@ function App() {
   return (
     <div className="App">
       <Nav />
-      {displayWelcome()}
+      <AddUser
+        names={names}
+        setNames={setNames}
+      />
+      {
+        names.length > 0 ?
+          displayWelcome() :
+          <h1 style={{textAlign: "center"}}>Add a User</h1>
+      }
       <Counter 
         count={count}
         setCount={setCount}
