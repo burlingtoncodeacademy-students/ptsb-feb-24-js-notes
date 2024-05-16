@@ -12,9 +12,11 @@ function Counter({count, setCount}) {
 
     return (
         <div className='counter'>
+            {/* <button onClick={}>- (2)</button> */}
             <button onClick={countDown}>-</button>
             <span>{count}</span>
             <button onClick={countUp}>+</button>
+            {/* <button onClick={countUp}>+ (2)</button> */}
         </div>
     )
 }
