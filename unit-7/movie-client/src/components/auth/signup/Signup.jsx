@@ -1,13 +1,16 @@
 import React, { useState, useRef } from 'react'
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
+import FullButton from '../../buttons/FullButton';
+import { useNavigate } from 'react-router-dom';
 
-export default function Signup() {
+export default function Signup({ updateToken }) {
 
     // const [ firstName, setFirstName ] = useState('');
     const firstNameRef = useRef();
     const lastNameRef = useRef();
     const emailRef = useRef();
     const passwordRef = useRef();
+    const navigate = useNavigate();
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -37,7 +40,14 @@ export default function Signup() {
         try {
             const response = await fetch(url, requestOption);
             const data = await response.json();
-            console.log(data);
+            // console.log(data);
+
+            if(data.message === 'Success!') {
+                updateToken(data.token);
+                navigate('/movie');
+            } else {
+                alert(data.message);
+            }
         } catch (err) {
             console.error(err.message)
         }
@@ -49,7 +59,7 @@ export default function Signup() {
             <Form onSubmit={handleSubmit}>
                 <FormGroup>
                     <Label>First Name:</Label>
-                    <Input 
+                    <Input
                         // value={firstName}
                         // onChange={e => setFirstName(e.target.value)}
                         innerRef={firstNameRef}
@@ -57,24 +67,34 @@ export default function Signup() {
                 </FormGroup>
                 <FormGroup>
                     <Label>Last Name:</Label>
-                    <Input 
+                    <Input
                         innerRef={lastNameRef}
                     />
                 </FormGroup>
                 <FormGroup>
                     <Label>Email:</Label>
-                    <Input 
+                    <Input
+                        type='email'
                         innerRef={emailRef}
                     />
                 </FormGroup>
                 <FormGroup>
                     <Label>Password:</Label>
-                    <Input 
+                    <Input
+                        type='password'
                         innerRef={passwordRef}
                     />
                 </FormGroup>
-                <Button type='submit'>Signup</Button>
+                <FullButton>
+                    <Button type='submit'>Signup</Button>
+                </FullButton>
             </Form>
         </>
     )
 }
+
+/* 
+! Challenge
+    - Set the Signup component to store our session token
+    - After the user signs up, have the route navigate to the /movie endpoint to display our placeholder page.
+*/
