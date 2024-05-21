@@ -192,7 +192,7 @@ router.delete('/:id', validateSession, async(req,res) => {
 
         //2. use delete method to locate and remove base off ID
         const deleteMovie = await Movie.deleteOne({_id: id, owner_id: req.user._id})
-        console.log(deleteMovie);
+        // console.log(deleteMovie);
 
         //3. Respond to client
         deleteMovie.deletedCount ?
